@@ -1,0 +1,28 @@
+/**
+* Author: DatDoan
+* Created Date: Apr 3, 2018
+*/
+package edu.mum.hw2.domain;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Product {
+  
+  private String name;
+  private String description;
+  
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+  
+}
