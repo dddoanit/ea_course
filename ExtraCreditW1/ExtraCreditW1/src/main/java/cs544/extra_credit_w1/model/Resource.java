@@ -26,4 +26,29 @@ public class Resource {
   
   @OneToMany(mappedBy="resource", cascade = CascadeType.ALL)
   private List<TaskResource> taskResources = new ArrayList<>();
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public List<TaskResource> getTaskResources() {
+    return taskResources;
+  }
+
+  public void setTaskResources(List<TaskResource> taskResources) {
+    this.taskResources = taskResources;
+  }
+  
 }

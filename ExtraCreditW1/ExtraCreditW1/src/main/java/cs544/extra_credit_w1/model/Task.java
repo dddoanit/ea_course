@@ -47,5 +47,65 @@ public class Task {
   
   @OneToMany(mappedBy="task", cascade = CascadeType.ALL)
   private List<TaskResource> taskResources = new ArrayList<>();
+
+  @ManyToOne
+  @JoinColumn(name = "VOLUNTEER_ID")
+  private Volunteer volunteer;
+  
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public TaskStatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(TaskStatusEnum status) {
+    this.status = status;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
+  }
+
+  public Project getProject() {
+    return project;
+  }
+
+  public void setProject(Project project) {
+    this.project = project;
+  }
+
+  public List<TaskResource> getTaskResources() {
+    return taskResources;
+  }
+
+  public void setTaskResources(List<TaskResource> taskResources) {
+    this.taskResources = taskResources;
+  }
+
+  public Volunteer getVolunteer() {
+    return volunteer;
+  }
+
+  public void setVolunteer(Volunteer volunteer) {
+    this.volunteer = volunteer;
+  }
   
 }
