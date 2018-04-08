@@ -49,6 +49,11 @@ public class ProjectDao {
     return query.getResultList();
    }
   
+  /**
+   * List projects and tasks where a volunteer have offered services, ordered by date of the task.
+   * @param volunteer
+   * @return
+   */
   @SuppressWarnings("unchecked")
   public List<Project> findByVolunteer(Volunteer volunteer) {
     Query query = em.createQuery(
