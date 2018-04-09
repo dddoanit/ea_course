@@ -16,6 +16,10 @@ import cs544.extra_credit_w1.utils.JpaUtil;
 public class ProjectDao {
   private EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
   
+  public Project findById(int id) {
+    return em.find(Project.class, id);
+  }
+  
   /**
    * List information about projects and their beneficiaries
    * @return

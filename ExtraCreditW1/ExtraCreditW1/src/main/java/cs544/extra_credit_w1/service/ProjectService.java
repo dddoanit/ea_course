@@ -14,6 +14,9 @@ import cs544.extra_credit_w1.model.Volunteer;
 public class ProjectService {
   private ProjectDao projectDao = new ProjectDao();
   
+  public Project findById(int id) {
+    return projectDao.findById(id);
+  }
   /**
    * List information about projects and their beneficiaries
    * @return

@@ -43,4 +43,25 @@ public class VolunteerResourceId implements Serializable{
     return true;
   }
 
+  public int getVolunteerId() {
+    return volunteerId;
+  }
+
+  public void setVolunteerId(int volunteerId) {
+    this.volunteerId = volunteerId;
+  }
+
+  public int getResourceId() {
+    return resourceId;
+  }
+
+  public void setResourceId(int resourceId) {
+    this.resourceId = resourceId;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+  
+
 }

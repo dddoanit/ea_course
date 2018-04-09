@@ -1,6 +1,6 @@
 /**
 * Author: DatDoan
-* Created Date: Apr 7, 2018
+* Created Date: Apr 8, 2018
 */
 package cs544.extra_credit_w1.model;
 
@@ -15,40 +15,41 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TASK_RESOURCE")
-public class TaskResource {
-  @EmbeddedId
-  private TaskResourceId pk = new TaskResourceId();
+@Table(name = "TASK_VOLUNTEER")
+public class TaskVolunteer {
   
-  @ManyToOne(fetch = FetchType.LAZY)
+  @EmbeddedId
+  private TaskVolunteerId pk = new TaskVolunteerId();
+  
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "TASK_ID")
   @MapsId("taskId")
   private Task task;
   
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "RESOURCE_ID")
-  @MapsId("resourceId")
-  private Resource resource;
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "VOLUNTEER_ID")
+  @MapsId("volunteerId")
+  private Volunteer volunteer;
   
   @Column(name = "NUM_RESOURCE")
   private int numResource;
 
-  public TaskResource() {
+  public TaskVolunteer(Task task, Volunteer volunteer) {
+    pk.setTaskId(task.getId());
+    pk.setVolunteerId(volunteer.getId());
+    this.task = task;
+    this.volunteer = volunteer;
+  }
+  
+  public TaskVolunteer() {
     
   }
   
-  public TaskResource(Task task, Resource resource) {
-    pk.setTaskId(task.getId());
-    pk.setResourceId(resource.getId());
-    this.task = task;
-    this.resource = resource;
-  }
-  
-  public TaskResourceId getPk() {
+  public TaskVolunteerId getPk() {
     return pk;
   }
 
-  public void setPk(TaskResourceId pk) {
+  public void setPk(TaskVolunteerId pk) {
     this.pk = pk;
   }
 
@@ -60,12 +61,12 @@ public class TaskResource {
     this.task = task;
   }
 
-  public Resource getResource() {
-    return resource;
+  public Volunteer getVolunteer() {
+    return volunteer;
   }
 
-  public void setResource(Resource resource) {
-    this.resource = resource;
+  public void setVolunteer(Volunteer volunteer) {
+    this.volunteer = volunteer;
   }
 
   public int getNumResource() {

@@ -41,16 +41,15 @@ public class Task {
   @Temporal(TemporalType.TIMESTAMP)
   private Date endDate;
   
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "PROJECT_ID")
   private Project project;
   
   @OneToMany(mappedBy="task", cascade = CascadeType.ALL)
   private List<TaskResource> taskResources = new ArrayList<>();
 
-  @ManyToOne
-  @JoinColumn(name = "VOLUNTEER_ID")
-  private Volunteer volunteer;
+  @OneToMany(mappedBy="task", cascade = CascadeType.ALL)
+  private List<TaskVolunteer> taskVolunteers = new ArrayList<>();
   
   public int getId() {
     return id;
@@ -100,12 +99,12 @@ public class Task {
     this.taskResources = taskResources;
   }
 
-  public Volunteer getVolunteer() {
-    return volunteer;
+  public List<TaskVolunteer> getTaskVolunteers() {
+    return taskVolunteers;
   }
 
-  public void setVolunteer(Volunteer volunteer) {
-    this.volunteer = volunteer;
+  public void setTaskVolunteers(List<TaskVolunteer> taskVolunteers) {
+    this.taskVolunteers = taskVolunteers;
   }
-  
+
 }

@@ -6,6 +6,7 @@ package cs544.extra_credit_w1.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +19,17 @@ import javax.persistence.Table;
 public class Volunteer {
   @Id
   @GeneratedValue
+  @Column(name = "ID")
   private int id;
   
   @Column(name = "NAME")
   private String name;
   
   @OneToMany(mappedBy="volunteer")
-  private List<Task> tasks = new ArrayList<>();
+  private List<TaskVolunteer> taskVolunteers = new ArrayList<>();
+  
+  @OneToMany(mappedBy="volunteer", cascade = CascadeType.ALL)
+  private List<VolunteerResource> volunteerResources = new ArrayList<>();
 
   public int getId() {
     return id;
@@ -40,14 +45,6 @@ public class Volunteer {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public List<Task> getTasks() {
-    return tasks;
-  }
-
-  public void setTasks(List<Task> tasks) {
-    this.tasks = tasks;
   }
   
 }
