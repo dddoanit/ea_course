@@ -5,9 +5,7 @@ package cs544.extra_credit_w1.service;
 
 import static org.junit.Assert.fail;
 import java.time.LocalDate;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import cs544.extra_credit_w1.model.Project;
@@ -16,7 +14,6 @@ import cs544.extra_credit_w1.model.Task;
 import cs544.extra_credit_w1.model.TaskResource;
 import cs544.extra_credit_w1.model.TaskStatusEnum;
 import cs544.extra_credit_w1.model.TaskVolunteer;
-import cs544.extra_credit_w1.model.TaskVolunteerId;
 import cs544.extra_credit_w1.model.Volunteer;
 
 public class TaskServiceTest {

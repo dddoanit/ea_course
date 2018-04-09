@@ -30,8 +30,8 @@ public class TaskVolunteer {
   @MapsId("volunteerId")
   private Volunteer volunteer;
   
-  @Column(name = "NUM_RESOURCE")
-  private int numResource;
+//  @Column(name = "NUM_RESOURCE")
+//  private int numResource;
 
   public TaskVolunteer(Task task, Volunteer volunteer) {
     pk.setTaskId(task.getId());
@@ -68,12 +68,12 @@ public class TaskVolunteer {
     this.volunteer = volunteer;
   }
 
-  public int getNumResource() {
-    return numResource;
-  }
-
-  public void setNumResource(int numResource) {
-    this.numResource = numResource;
-  }
+//  public int getNumResource() {
+//    return numResource;
+//  }
+//
+//  public void setNumResource(int numResource) {
+//    this.numResource = numResource;
+//  }
   
 }

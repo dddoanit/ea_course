@@ -4,7 +4,6 @@
 */
 package cs544.extra_credit_w1.model;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,8 +28,8 @@ public class VolunteerResource {
   @MapsId("resourceId")
   private Resource resource;
   
-  @Column(name = "NUM_RESOURCE")
-  private int numResource;
+//  @Column(name = "NUM_RESOURCE")
+//  private int numResource;
 
   public VolunteerResource() {
     
@@ -67,12 +66,12 @@ public class VolunteerResource {
     this.resource = resource;
   }
 
-  public int getNumResource() {
-    return numResource;
-  }
-
-  public void setNumResource(int numResource) {
-    this.numResource = numResource;
-  }
+//  public int getNumResource() {
+//    return numResource;
+//  }
+//
+//  public void setNumResource(int numResource) {
+//    this.numResource = numResource;
+//  }
   
 }
