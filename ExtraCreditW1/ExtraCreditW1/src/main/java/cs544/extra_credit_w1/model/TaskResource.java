@@ -4,7 +4,6 @@
 */
 package cs544.extra_credit_w1.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

@@ -4,7 +4,6 @@
 */
 package cs544.extra_credit_w1.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -20,12 +19,12 @@ public class VolunteerResource {
   @EmbeddedId
   private VolunteerResourceId pk = new VolunteerResourceId();
   
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "VOLUNTEER_ID")
   @MapsId("volunteerId")
   private Volunteer volunteer;
   
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "RESOURCE_ID")
   @MapsId("resourceId")
   private Resource resource;
