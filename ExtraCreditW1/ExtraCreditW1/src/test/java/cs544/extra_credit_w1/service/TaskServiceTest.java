@@ -5,6 +5,7 @@ package cs544.extra_credit_w1.service;
 
 import static org.junit.Assert.fail;
 import java.time.LocalDate;
+import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -64,6 +65,14 @@ public class TaskServiceTest {
       fail("Failed to update task");
     }
     taskService.delete(task);
+  }
+  
+  @Test
+  public void findByProject() {
+    List<Task> taskes = taskService.findByProject(project);
+    if (taskes.size() == 0) {
+      fail("Failt to test findByProject");
+    }
   }
   
 }

@@ -47,7 +47,7 @@ public class ProjectDao {
   @SuppressWarnings("unchecked")
   public List<Project> findByResource(Resource resource) {
     Query query = em.createQuery(
-        "select p from Project p join p.task t join  t.taskResources r where r.resourceId = :resourceId",
+        "select distinct p from Project p join p.tasks t join t.taskResources tr join tr.resource r where r.id = :resourceId",
         Project.class);
     query.setParameter("resourceId", resource.getId());
     return query.getResultList();
@@ -61,7 +61,7 @@ public class ProjectDao {
   @SuppressWarnings("unchecked")
   public List<Project> findByVolunteer(Volunteer volunteer) {
     Query query = em.createQuery(
-        "select p from Project p join p.task t join  t.volunteer v where v.id = :volunteerId",
+        "select distinct p from Project p join p.tasks t join t.taskVolunteers tv join tv.volunteer v where v.id = :volunteerId",
         Project.class);
     query.setParameter("volunteerId", volunteer.getId());
     return query.getResultList();

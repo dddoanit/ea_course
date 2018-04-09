@@ -43,7 +43,7 @@ public class TaskDao {
   @SuppressWarnings("unchecked")
   public List<Task> findByProject(Project project) {
     Query query = em.createQuery(
-        "select t from Task t join t.Project p where p.id = :projectId",
+        "select t from Task t join t.project p where p.id = :projectId",
         Task.class);
     query.setParameter("projectId", project.getId());
     return query.getResultList();
