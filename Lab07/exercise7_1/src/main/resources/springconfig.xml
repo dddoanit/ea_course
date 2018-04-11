@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<tx:annotation-driven/>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="connection.pool_size">10</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- use thread local pattern -->
+				<!-- <prop key="current_session_context_class">thread</prop> -->
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://35.185.35.236/cs544_lab7?createDatabaseIfNotExist=true"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties" ref="hibernateProperties"></property>
+		<property name="packagesToScan" value="cs544.exercise7_1.bank.domain"></property>
+	</bean>
+	
+	<bean id="accountDAOHibernate" class="cs544.exercise7_1.bank.dao.AccountDAOHibernate">
+		<property name="sf" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="currencyConverter" class="cs544.exercise7_1.bank.service.CurrencyConverter"></bean>
+	<bean id="jmsSender" class="cs544.exercise7_1.bank.jms.JMSSender"></bean>
+	<bean id="logger" class="cs544.exercise7_1.bank.logging.Logger"></bean>
+	
+	<bean id="accountService" class="cs544.exercise7_1.bank.service.AccountService">
+		<property name="accountDAO" ref="accountDAOHibernate"></property>
+		<property name="currencyConverter" ref="currencyConverter"></property>
+		<property name="jmsSender" ref="jmsSender"></property>
+		<property name="logger" ref="logger"></property>
+	</bean>
+	
+</beans>
