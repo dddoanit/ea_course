@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" th:href="@{/modules/bootstrap/css/bootstrap.css}" />
+<script type="text/javascript" th:src="@{/modules/jquery/jquery-3.3.1.js}"></script>
+<script type="text/javascript" th:src="@{/modules/bootstrap/js/bootstrap.js}"></script>
+<title>TV Show</title>
+</head>
+<body>
+	<div th:replace="fragments/menu :: menu"></div>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading"> <h3 class="panel-title">TV Show</h3> </div>
+			<div class="panel-body">
+				<form th:object="${tvShow}" th:action="@{/admin/tvshow/create}" method="post">
+				  <div class="form-group row">
+				    <label for="name" class="col-sm-2 col-form-label">Name</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}" required="true"/>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="price" class="col-sm-2 col-form-label">Genre</label>
+				    <div class="col-sm-10">
+				       <select th:field="*{genre}">
+				      	<option th:each="type: ${genres}" th:text="${type}" th:value="${type}"></option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="type" class="col-sm-2 col-form-label">Summary</label>
+				    <div class="col-sm-10">
+				    	<textarea rows="5" class="form-control" th:field="*{generalInfo.summary}" required="true">
+				    	  </textarea>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="name" class="col-sm-2 col-form-label">Year</label>
+				    <div class="col-sm-10">
+				      <input type="number" class="form-control" id="year" placeholder="Year" th:field="*{generalInfo.year}" required="true"/>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="name" class="col-sm-2 col-form-label">Poster</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="poster" placeholder="Poster" th:field="*{generalInfo.poster}" required="true"/>
+				    </div>
+				  </div>
+				  <input type="hidden" th:field="*{id}" />
+				  <input type="submit" class="btn btn-primary" value="Create" th:if="*{id} == 0"/>
+				  <input type="submit" class="btn btn-primary" value="Update" th:if="*{id} != 0"/>
+				 </form>
+			</div>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+</body>
+</html>

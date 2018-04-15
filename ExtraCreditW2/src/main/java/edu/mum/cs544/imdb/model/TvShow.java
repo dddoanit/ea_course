@@ -33,5 +33,45 @@ public class TvShow {
   
   @OneToMany(mappedBy = "tvShow")
   private List<Season> seasons = new ArrayList<>();
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Genre getGenre() {
+    return genre;
+  }
+
+  public void setGenre(Genre genre) {
+    this.genre = genre;
+  }
+
+  public GeneralInfo getGeneralInfo() {
+    return generalInfo;
+  }
+
+  public void setGeneralInfo(GeneralInfo generalInfo) {
+    this.generalInfo = generalInfo;
+  }
+
+  public List<Season> getSeasons() {
+    return seasons;
+  }
+
+  public void setSeasons(List<Season> seasons) {
+    this.seasons = seasons;
+  }
   
 }
