@@ -9,20 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "`character`")
-public class Character {
+public class Comment {
   @Id
   @GeneratedValue
   private int id;
   
-  private String name;
+  private String comment;
+  
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
   
   @ManyToOne
   @JoinColumn(name = "episode_id")
   private Episode episode;
-  
-  
 }
