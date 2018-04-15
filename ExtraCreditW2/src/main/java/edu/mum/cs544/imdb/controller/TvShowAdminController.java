@@ -34,7 +34,9 @@ public class TvShowAdminController {
   private String get(Model model, @ModelAttribute("tvShow") TvShow tvShow,
       @RequestParam(value = "id", required = false) Integer id) {
     if (id != null && id > 0) {
-      model.addAttribute("tvShow", tvShowService.getTvShow(id));
+      TvShow updatedTvShow = tvShowService.getTvShow(id);
+      model.addAttribute("tvShow", updatedTvShow);
+      model.addAttribute("seasons", updatedTvShow.getSeasons());
     }
     return "admin/tvshow/create";
   }

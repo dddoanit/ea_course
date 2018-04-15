@@ -53,6 +53,39 @@
 				 </form>
 			</div>
 		</div>
+		<div class="panel panel-default" th:if="${seasons != null}">
+			<div class="panel-heading"> <h3 class="panel-title">Seasons</h3> </div>
+			<div class="panel-body">
+			  <table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">Name</th>
+				      <th></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="season : ${seasons}">
+				      <td class="col-md-11" scope="row">
+				      	<a th:href="@{/admin/season/create(id=${season.id})}" th:text="${season.name}"></a>
+				      </td>
+				      <td class="col-md-1">
+				      	<form method="post" th:action="@{'/admin/season/delete/'+${season.id}}">
+				      		<input type="submit" class="btn btn-danger" value="Delete"/>
+				      	</form>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+			<div class="panel-footer">
+				<form th:action="@{/admin/season/create}" method="get">
+					<input type="hidden" name="tvShowId" th:value="${tvShow.id}"/>
+					<button type="submit" class="btn btn-default" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create
+					</button>
+				</form>
+			</div>
+		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
 </body>
