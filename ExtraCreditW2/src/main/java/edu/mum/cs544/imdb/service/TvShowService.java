@@ -26,4 +26,11 @@ public class TvShowService {
     return tvShowRepository.findAll();
   }
   
+  public TvShow getTvShow(int id) {
+    return tvShowRepository.findOne(id);
+  }
+  
+  public void delete(TvShow tvShow) {
+    tvShowRepository.delete(tvShow);
+  }
 }

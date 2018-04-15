@@ -31,6 +31,8 @@ public class TvShow {
   @Embedded
   private GeneralInfo generalInfo;
   
+  private float rating;
+  
   @OneToMany(mappedBy = "tvShow")
   private List<Season> seasons = new ArrayList<>();
 
@@ -73,5 +75,14 @@ public class TvShow {
   public void setSeasons(List<Season> seasons) {
     this.seasons = seasons;
   }
+
+  public float getRating() {
+    return rating;
+  }
+
+  public void setRating(float rating) {
+    this.rating = rating;
+  }
+  
   
 }
