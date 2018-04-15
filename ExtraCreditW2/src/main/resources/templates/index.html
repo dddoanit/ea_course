@@ -13,14 +13,79 @@
 	<div th:replace="fragments/menu :: menu"></div>
 	<div class="container">
 		<div class="row">
-			<!-- <div class="col-xs-6 col-lg-4" th:each="prod : ${products}">
-				<h2 th:text="${prod.productName}"></h2>
-				<h4>$<span th:text="${prod.price}"></span></h4>
-				<p th:text="${prod.description}"></p>
-				<form method="post" th:action="@{'/cart/add/product/' + ${prod.id}}">
-					<input type="submit" class="btn btn-default" value="Add"/>
-				</form>
-			</div> -->
+			<div class="panel panel-default">
+				<div class="panel-heading"> <h3 class="panel-title">Search</h3> </div>
+				<div class="panel-body">
+					<form th:object="${search}" th:action="@{/search}" method="post">
+					  <div class="form-group row">
+					    <label for="name" class="col-sm-2 col-form-label">Name of the show</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="nameShow" placeholder="Name of the show" th:field="*{nameShow}"/>
+					    </div>
+					    <label for="name" class="col-sm-2 col-form-label">Genre of the show</label>
+					    <div class="col-sm-4">
+					      <select th:field="*{genreShow}">
+					      	<option th:each="type: ${genres}" th:text="${type}" th:value="${type}"></option>
+					      </select>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="name" class="col-sm-2 col-form-label">Rating of the show</label>
+					    <div class="col-sm-4">
+					      <input type="number" class="form-control" id="ratingShow" placeholder="Rating of the show" th:field="*{ratingShow}"/>
+					    </div>
+					    <label for="name" class="col-sm-2 col-form-label">Name of the artist</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="nameArtist" placeholder="Name of the artist" th:field="*{nameArtist}"/>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="name" class="col-sm-2 col-form-label">Name of the character</label>
+					    <div class="col-sm-4">
+					      <input type="number" class="form-control" id="nameCharacter" placeholder="Rating of the show" th:field="*{nameCharacter}"/>
+					    </div>
+					    <label for="name" class="col-sm-2 col-form-label">Director of the show</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="nameDirector" placeholder="Director of the show" th:field="*{nameDirector}"/>
+					    </div>
+					  </div>
+					  <input type="submit" class="btn btn-primary" value="Search"/>
+				 	</form>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading"> <h3 class="panel-title">TV Shows</h3> </div>
+				<div class="panel-body">
+				  <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">Poster</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Genre</th>
+					      <th scope="col">Year</th>
+					      <th scope="col">Rating</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="tvShow : ${tvShows}">
+					     <td class="col-md-2" scope="row">
+					      	<a th:href="@{/admin/tvshow/create(id=${tvShow.id})}">
+					      		<img alt="" th:src="${tvShow.generalInfo.poster}" th:alt="${tvShow.name}" style="width: 50px; height: 50px"/>
+					      	</a>
+					      </td>
+					      <td class="col-md-4" scope="row">
+					      	<a th:href="@{/admin/tvshow/create(id=${tvShow.id})}" th:text="${tvShow.name}"></a>
+					      </td>
+					      <td class="col-md-2" th:text="${tvShow.genre}"></td>
+					      <td class="col-md-2" th:text="${tvShow.generalInfo.year}"></td>
+					      <td class="col-md-2" th:text="${tvShow.rating}"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>

@@ -33,4 +33,9 @@ public class TvShowService {
   public void delete(TvShow tvShow) {
     tvShowRepository.delete(tvShow);
   }
+  
+  public List<TvShow> search(String nameShow, String genreShow) {
+    return tvShowRepository.search(nameShow, TvShow.Genre.valueOf(genreShow));
+  }
+  
 }
