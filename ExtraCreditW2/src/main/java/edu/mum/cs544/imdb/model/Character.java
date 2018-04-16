@@ -23,6 +23,29 @@ public class Character {
   @ManyToOne
   @JoinColumn(name = "episode_id")
   private Episode episode;
-  
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Episode getEpisode() {
+    return episode;
+  }
+
+  public void setEpisode(Episode episode) {
+    this.episode = episode;
+  }
   
 }

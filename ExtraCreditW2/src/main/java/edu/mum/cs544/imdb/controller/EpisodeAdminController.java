@@ -32,6 +32,7 @@ public class EpisodeAdminController {
     if (id != null && id > 0) {
       Episode updatedEpisode = episodeService.getEpisode(id);
       model.addAttribute("episode", updatedEpisode);
+      model.addAttribute("characters", updatedEpisode.getCharacters());
     } else {
       episode = new Episode();
       episode.setSeason(seasonService.getSeason(seasonId));
