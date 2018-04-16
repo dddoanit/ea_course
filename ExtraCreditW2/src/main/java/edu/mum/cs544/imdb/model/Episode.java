@@ -24,6 +24,8 @@ public class Episode {
   @GeneratedValue
   private int id;
   
+  private String name;
+  
   private String description;
   
   @Temporal(TemporalType.DATE)
@@ -48,4 +50,69 @@ public class Episode {
   
   @OneToMany(mappedBy = "episode")
   private List<Comment> comments = new ArrayList<>();
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Date getDateOfAired() {
+    return dateOfAired;
+  }
+
+  public void setDateOfAired(Date dateOfAired) {
+    this.dateOfAired = dateOfAired;
+  }
+
+  public Season getSeason() {
+    return season;
+  }
+
+  public void setSeason(Season season) {
+    this.season = season;
+  }
+
+  public List<Character> getCharacters() {
+    return characters;
+  }
+
+  public void setCharacters(List<Character> characters) {
+    this.characters = characters;
+  }
+
+  public List<Artist> getArtists() {
+    return artists;
+  }
+
+  public void setArtists(List<Artist> artists) {
+    this.artists = artists;
+  }
+
+  public List<Comment> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Comment> comments) {
+    this.comments = comments;
+  }
+  
 }
