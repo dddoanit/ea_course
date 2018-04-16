@@ -1,0 +1,4 @@
+INSERT INTO tv_show (id,poster,summary,year,genre,name,rating)  VALUES (1,'https://ia.media-imdb.com/images/M/MV5BMmNlNzdlNmItODQ1NC00NTMwLWI4ZWQtMWFiMzhiMDI4MmU0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_UX275_CR0,0,275,120_AL_.jpg','David Attenborough returns in this breathtaking documentary showcasing life on Planet Earth.',2016,'DOCUMENTARY','Planet Earth II (2016)',0);
+INSERT INTO season (id, name, tvshow_id) VALUES (1,'1',1);
+INSERT INTO episode (id, date_of_aired, description, season_id, name) VALUES (1,NULL,'Episode 1',1,'Episode 1'),(3,NULL,'Episode 2',1,'Episode 2');
+INSERT INTO `character` (id, name, episode_id) VALUES (1,'David Attenborough',1);
