@@ -37,7 +37,6 @@ public class HomeController {
 
   @ModelAttribute("genres")
   public List<TvShow.Genre> productTypes() {
-    List<TvShow.Genre> genres = Arrays.asList(TvShow.Genre.values());
     return Arrays.asList(TvShow.Genre.values());
   }
 }
