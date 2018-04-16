@@ -36,10 +36,10 @@ public class Episode {
   @OneToMany(mappedBy = "episode")
   private List<Character> characters = new ArrayList<>();
   
-  @ManyToMany
-  @JoinTable(name = "episode_director", joinColumns = @JoinColumn(name = "episode_id"),
-      inverseJoinColumns = @JoinColumn(name = "director_id"))
-  private List<Director> directors = new ArrayList<>();
+//  @ManyToMany
+//  @JoinTable(name = "episode_director", joinColumns = @JoinColumn(name = "episode_id"),
+//      inverseJoinColumns = @JoinColumn(name = "director_id"))
+//  private List<Director> directors = new ArrayList<>();
   
   @ManyToMany
   @JoinTable(name = "episode_artist", joinColumns = @JoinColumn(name = "episode_id"),

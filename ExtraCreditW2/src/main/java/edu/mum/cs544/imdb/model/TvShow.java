@@ -11,6 +11,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -35,6 +38,11 @@ public class TvShow {
   
   @OneToMany(mappedBy = "tvShow")
   private List<Season> seasons = new ArrayList<>();
+  
+  @ManyToMany
+  @JoinTable(name = "tv_show_director", joinColumns = @JoinColumn(name = "tv_show_id"),
+      inverseJoinColumns = @JoinColumn(name = "director_id"))
+  private List<Director> directors = new ArrayList<>();
 
   public int getId() {
     return id;
@@ -82,6 +90,14 @@ public class TvShow {
 
   public void setRating(float rating) {
     this.rating = rating;
+  }
+
+  public List<Director> getDirectors() {
+    return directors;
+  }
+
+  public void setDirectors(List<Director> directors) {
+    this.directors = directors;
   }
   
   

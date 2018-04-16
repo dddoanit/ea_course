@@ -14,6 +14,6 @@ import javax.persistence.ManyToMany;
 @DiscriminatorValue("Director")
 public class Director extends Person {
   @ManyToMany(mappedBy = "directors")
-  private List<Episode> episodes = new ArrayList<>();
+  private List<TvShow> tvShows = new ArrayList<>();
   
 }

@@ -27,9 +27,11 @@ public class HomeController {
   }
   
   @PostMapping({"/search"})
-  public String search(Model model,  @ModelAttribute("search") SearchParam searchParam) {
+  public String search(Model model, @ModelAttribute("search") SearchParam searchParam) {
     model.addAttribute("tvShows",
-        tvShowService.search(searchParam.getNameShow(), searchParam.getGenreShow()));
+        tvShowService.search(searchParam.getNameShow(), searchParam.getGenreShow(),
+            searchParam.getRatingShow(), searchParam.getNameArtist(),
+            searchParam.getNameCharacter(), searchParam.getNameDirector()));
     return "index";
   }
   
