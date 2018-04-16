@@ -26,6 +26,7 @@
 					    <div class="col-sm-4">
 					      <select th:field="*{genreShow}">
 					      	<option th:each="type: ${genres}" th:text="${type}" th:value="${type}"></option>
+					      	<option th:text="${'ALL'}" th:value="${'ALL'}"></option>
 					      </select>
 					    </div>
 					  </div>

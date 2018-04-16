@@ -25,7 +25,7 @@ public class HomeController {
     model.addAttribute("tvShows", tvShowService.findAll());
     return "index";
   }
-  
+
   @PostMapping({"/search"})
   public String search(Model model, @ModelAttribute("search") SearchParam searchParam) {
     model.addAttribute("tvShows",
@@ -34,9 +34,10 @@ public class HomeController {
             searchParam.getNameCharacter(), searchParam.getNameDirector()));
     return "index";
   }
-  
+
   @ModelAttribute("genres")
   public List<TvShow.Genre> productTypes() {
-      return Arrays.asList(TvShow.Genre.values());
+    List<TvShow.Genre> genres = Arrays.asList(TvShow.Genre.values());
+    return Arrays.asList(TvShow.Genre.values());
   }
 }

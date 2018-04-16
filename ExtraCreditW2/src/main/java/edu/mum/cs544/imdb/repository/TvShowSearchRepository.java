@@ -26,7 +26,7 @@ public class TvShowSearchRepository {
     if (!StringUtils.isEmpty(nameShow)) {
       sql += " and LOWER(tv.name) like CONCAT('%', LOWER(:nameShow), '%')";
     }
-    if (!StringUtils.isEmpty(genreShow)) {
+    if (!StringUtils.isEmpty(genreShow) && !"ALL".equals(genreShow)) {
       sql += " and tv.genre = :genreShow";
     }
     if (ratingShow >= 1) {
@@ -47,7 +47,7 @@ public class TvShowSearchRepository {
     if (!StringUtils.isEmpty(nameShow)) {
       query.setParameter("nameShow", nameShow);
     }
-    if (!StringUtils.isEmpty(genreShow)) {
+    if (!StringUtils.isEmpty(genreShow) && !"ALL".equals(genreShow)) {
       query.setParameter("genreShow", TvShow.Genre.valueOf(genreShow));
     }
     if (ratingShow >= 1) {
