@@ -14,11 +14,18 @@
 	<bean id="greetingService" class="cs544.exercise10_2.service.GreetingService">
 		<property name="greeting" value="Hello" />
 	</bean>
+	<bean id="calculatorService" class="cs544.exercise10_2.service.CalculatorService">
+	</bean>
 
 	<bean name="/GreetingService"
 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
 		<property name="service" ref="greetingService" />
 		<property name="serviceInterface" value="cs544.exercise10_2.service.IGreeting" />
+	</bean>
+	<bean name="/CalculatorService"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="calculatorService" />
+		<property name="serviceInterface" value="cs544.exercise10_2.service.ICalculator" />
 	</bean>
 
 </beans>

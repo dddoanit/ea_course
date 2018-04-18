@@ -15,5 +15,9 @@
 		<property name="serviceUrl" value="http://localhost:8080/exercise10_2-service/GreetingService" />
 		<property name="serviceInterface" value="cs544.exercise10_2.service.IGreeting" />
 	</bean>
+	<bean id="calculatorHttpInvokerProxy" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:8080/exercise10_2-service/CalculatorService" />
+		<property name="serviceInterface" value="cs544.exercise10_2.service.ICalculator" />
+	</bean>
 
 </beans>
